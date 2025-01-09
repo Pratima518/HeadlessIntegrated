@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, details = "dummy_value" } = req.body; // Receiving data from the React frontend
+    const { name } = req.body; // Receiving data from the React frontend
 
     // Step 1: Obtain OAuth 2.0 Access Token
     const tokenResponse = await fetch('https://providermanagementapp-ttyxq5-prod.lp.trials.pegaservice.net/dx/uas/oauth/token', {

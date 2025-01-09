@@ -23,7 +23,6 @@ const CreateProvider = () => {
         },
         body: JSON.stringify({
           name: providerName,
-          details: providerDescription,
         }),
       });
 
