@@ -1,7 +1,7 @@
 import React from 'react';
 import { AuthProvider } from 'react-oidc-context';
 //import awsExports from '../aws-exports'; // Adjust the path as needed
-import '../styles/globals.css'; // Import your global styles
+//import '../styles/globals.css'; // Import your global styles
 
 const cognitoAuthConfig = {
   authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_X5evnEAAS",
