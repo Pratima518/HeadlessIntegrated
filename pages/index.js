@@ -21,33 +21,31 @@ const cognitoAuthConfig = {
 const AppWrapper = () => {
   const [isClient, setIsClient] = useState(false);
 
-  // Ensure this code runs after the component mounts
+  // Ensures client-specific logic runs only on the client side
   useEffect(() => {
-    setIsClient(true); // Set to true when the component mounts (on client)
+    // This will set isClient to true once the component is mounted on the client side
+    setIsClient(true);
   }, []); // Only run once on mount
 
-  // Only render the app once we are sure we are on the client side
-  useEffect(() => {
-    if (isClient) {
-      const root = document.getElementById('root');
-      if (root) {
-        ReactDOM.createRoot(root).render(
-          <React.StrictMode>
-            <AuthProvider {...cognitoAuthConfig}>
-              <App />
-            </AuthProvider>
-          </React.StrictMode>
-        );
-      }
-    }
-  }, [isClient]); // Only run this once the client is set to true
-
-  // Prevent rendering on the server side
   if (!isClient) {
-    return null; // Skip rendering during SSR
+    return null; // Avoid rendering during SSR
   }
 
-  return <div id="root" />; // Ensure there's an element with id="root"
+  // Dynamically load ReactDOM in the client-side only
+  useEffect(() => {
+    const root = document.getElementById('root');
+    if (root) {
+      ReactDOM.createRoot(root).render(
+        <React.StrictMode>
+          <AuthProvider {...cognitoAuthConfig}>
+            <App />
+          </AuthProvider>
+        </React.StrictMode>
+      );
+    }
+  }, [isClient]); // Ensure this runs after the client mount
+
+  return <div id="root" />; // Make sure there's an element with id="root" in the DOM
 };
 
 AppWrapper();
