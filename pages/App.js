@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from 'react-oidc-context';
 import CreateProvider from './CreateProvider'; // Make sure the path is correct
 
 function App() {
+  const [isClient, setIsClient] = useState(false);  
   const auth = useAuth();
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   const signOutRedirect = () => {
     const clientId = "6v3vrfja0ofkuckrbde5fe0t6h";
@@ -11,6 +16,10 @@ function App() {
     const cognitoDomain = "https://us-east-1x5evneaas.auth.us-east-1.amazoncognito.com";
     window.location.href = `${cognitoDomain}/logout?client_id=${clientId}&logout_uri=${encodeURIComponent(logoutUri)}`;
   };
+
+  if (!isClient) {
+    return null; // Render nothing on the server
+  }
 
   if (auth.isLoading) {
     return <div>Loading...</div>;
