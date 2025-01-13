@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 //import './index.css';
 import App from './App';
@@ -18,12 +18,21 @@ const cognitoAuthConfig = {
   scope: "email openid phone",
 };
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-// wrap the application with AuthProvider
-root.render(
-  <React.StrictMode>
-    <AuthProvider {...cognitoAuthConfig}>
-      <App />
-    </AuthProvider>
-  </React.StrictMode>
-);
+const AppWrapper = () => {
+  useEffect(() => {
+    const root = document.getElementById('root');
+    if (root) {
+      ReactDOM.createRoot(root).render(
+        <React.StrictMode>
+          <AuthProvider {...cognitoAuthConfig}>
+            <App />
+          </AuthProvider>
+        </React.StrictMode>
+      );
+    }
+  }, []); // Empty dependency array means this runs once when the component mounts
+
+  return <div id="root" />; // Ensure there's an element with id="root"
+};
+
+AppWrapper();
