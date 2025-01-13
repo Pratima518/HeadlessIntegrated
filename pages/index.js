@@ -10,6 +10,8 @@ const DynamicAuthProvider  = dynamic(
   { ssr: false }
 );
 
+const DynamicApp = dynamic(() => import('../App'), { ssr: false });
+
 const cognitoAuthConfig = {
   authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_X5evnEAAS",
   client_id: "6v3vrfja0ofkuckrbde5fe0t6h",
@@ -21,7 +23,7 @@ const cognitoAuthConfig = {
 function Home() {
   return (
     <DynamicAuthProvider  {...cognitoAuthConfig}>
-      <App />
+      <DynamicApp />
     </DynamicAuthProvider >
   );
 }
