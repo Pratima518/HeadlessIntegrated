@@ -5,7 +5,7 @@ import App from './App';
 //import reportWebVitals from './reportWebVitals';
 
 // Import Amplify and configuration
-import { Amplify } from 'aws-amplify';
+//import { Amplify } from 'aws-amplify';
 //import awsExports from './aws-exports'; // Import your AWS Amplify configuration
 import { AuthProvider } from "react-oidc-context";
 
