@@ -14,10 +14,7 @@ const cognitoAuthConfig = {
 function Home() {
   return (
     <AuthProvider {...cognitoAuthConfig}>
-      <div>
-        <h1>Welcome to Next.js with AWS Cognito Authentication</h1>
-        {/* Your application code */}
-      </div>
+      <App />
     </AuthProvider>
   );
 }
