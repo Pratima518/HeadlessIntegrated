@@ -1,11 +1,11 @@
 import React from 'react';
 import dynamic from 'next/dynamic';
 import App from './App';
-//import { AuthProvider } from 'react-oidc-context';
+import { AuthProvider } from 'react-oidc-context';
 //import awsExports from '../aws-exports'; // Adjust the path as needed
 //import '../styles/globals.css'; // Import your global styles
 
-const AuthProvider = dynamic(
+const DynamicAuthProvider  = dynamic(
   () => import('react-oidc-context').then(mod => mod.AuthProvider),
   { ssr: false }
 );
@@ -20,9 +20,9 @@ const cognitoAuthConfig = {
 
 function Home() {
   return (
-    <AuthProvider {...cognitoAuthConfig}>
+    <DynamicAuthProvider  {...cognitoAuthConfig}>
       <App />
-    </AuthProvider>
+    </DynamicAuthProvider >
   );
 }
 
