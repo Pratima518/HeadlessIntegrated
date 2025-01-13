@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 //import './index.css';
 import App from './App';
@@ -19,6 +19,19 @@ const cognitoAuthConfig = {
 };
 
 const AppWrapper = () => {
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // Set the state to indicate that we are on the client
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) {
+    // Prevent rendering code that requires 'document' or 'window' on the server
+    return null;
+  }
+
+  // Only runs after the component has mounted on the client
   useEffect(() => {
     const root = document.getElementById('root');
     if (root) {
