@@ -14,7 +14,7 @@ const DynamicApp = dynamic(() => import('./App'), { ssr: false });
 
 const cognitoAuthConfig = {
   authority: "https://cognito-idp.us-east-1.amazonaws.com/us-east-1_X5evnEAAS",
-  client_id: "6v3vrfja0ofkuckrbde5fe0t6h",
+  client_id: "3ik1c2jpn4m7urf6duvslnfoa6",
   redirect_uri: "https://main.d2a8o3mvbrxbc1.amplifyapp.com",
   response_type: "code",
   scope: "email openid phone",
