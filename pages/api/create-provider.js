@@ -14,8 +14,8 @@ export default async function handler(req, res) {
       },
       body: new URLSearchParams({
         grant_type: 'client_credentials',
-        client_id: 'aLSXMzzzKI9EUvtq',
-        client_secret: 'usG5e9Y0vR6i2NLqsVxQEqLjWV5KEcqy',
+        client_id: 'abc',
+        client_secret: 'def',
       }),
     });
 
