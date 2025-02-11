@@ -15,7 +15,7 @@ const CreateProvider = () => {
     setError(null);
 
     try {
-      // Send values of providerName and providerDescription to the backend
+      // Send values of provider and providerDescription to the backend
       const res = await fetch('/api/create-provider', {
         method: 'POST',
         headers: {
